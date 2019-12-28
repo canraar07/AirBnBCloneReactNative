@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { SafeAreaView, Text, StyleSheet, Image } from 'react-native';
+import { SafeAreaView, Text, StyleSheet, Image, View } from 'react-native';
 import colors from "../style/color";
 
 class InboxScreen extends Component {
@@ -8,9 +8,13 @@ class InboxScreen extends Component {
             <SafeAreaView style={styles.container}>
                 <Text style={styles.texthead}>Kotak Masuk</Text>
                 <Text style={styles.textSubHead}>Pesan dari tuan rumah akan muncul di sini</Text>
+                <View style={styles.imageContent}>
                 <Image style={styles.imageStyle} 
-                source = {require("../image/noinbox.png")}
+                source = {require("../image/ilustrationinbox.png")}
+                resizeMode="contain"
                 />
+                </View>
+                
             </SafeAreaView>
         )
     }
@@ -32,8 +36,12 @@ const styles = StyleSheet.create({
         marginLeft: 15
     },
     imageStyle:{
-        marginLeft: 0,
-        width : 300,
+        marginLeft: 15,
+        width:300,
+        height: 200
+    },
+    imageContent:{
+        width:300,
         height: 300
     }
 })
