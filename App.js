@@ -12,9 +12,7 @@ import {
   SafeAreaView,
   StyleSheet
 } from 'react-native';
-import Navigation from './src/Navigator'
-import LoginScreen from "./src/Screen/LoginScreen"
-
+import Navigation from './src/Navigator';
 import {
   Colors,
 } from 'react-native/Libraries/NewAppScreen';

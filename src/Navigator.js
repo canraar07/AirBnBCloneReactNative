@@ -1,4 +1,5 @@
-import Login from './Screen/LoginScreen'
+import Login from './Screen/LoginScreen';
+import TabNavigator from './TabNavigator'
 import {createAppContainer} from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
@@ -10,7 +11,14 @@ const Navigator = createStackNavigator(
                 title: 'Login',
                 header: null
               },
+        },
+        Dashboard: {
+            screen: TabNavigator,
+            navigationOptions: {
+                header: null
+              },
         }
+
     },
     {
         initialRouteName: 'Home',
