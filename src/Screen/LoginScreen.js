@@ -5,6 +5,7 @@ import colors from "../style/color";
 import { Colors } from "react-native/Libraries/NewAppScreen";
 import Icon from "react-native-vector-icons/FontAwesome";
 import Toast, {DURATION} from 'react-native-easy-toast'
+import axios from 'axios';
 export default class Login extends Component {
   constructor(props) {
     super(props);
@@ -15,7 +16,16 @@ export default class Login extends Component {
   }
   handleLogin = () =>{
     if (this.state.textEmail != '' && this.state.textPassword != '') {
-    this.props.navigation.navigate('Dashboard');
+      axios.get(`https://dumyapi.000webhostapp.com/login.php?username=${this.state.textEmail}&password=${this.state.textPassword}`)
+      .then(res => {
+        console.log(res);
+        if(res.data.status === "sukses"){
+          this.props.navigation.navigate('Dashboard');
+        }else{
+          console.log(res.data.status);
+          this.refs.toast.show(res.data.status);
+        }
+      })
     }else if (this.state.textEmail == ''){
       this.refs.toast.show('Email Harus Di Isi');
     }else if (this.state.textPassword == ''){

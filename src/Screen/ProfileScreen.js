@@ -5,7 +5,7 @@ class ProfileScreen extends Component {
     render() {
         return (
             <SafeAreaView style={styles.container}>
-                <Text>Profile Screen</Text>
+                
             </SafeAreaView>
         )
     }
