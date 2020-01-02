@@ -6,19 +6,27 @@ import { Colors } from "react-native/Libraries/NewAppScreen";
 import Icon from "react-native-vector-icons/FontAwesome";
 import Toast, {DURATION} from 'react-native-easy-toast'
 import axios from 'axios';
+import Spinner from 'react-native-loading-spinner-overlay';
 export default class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
       textEmail: '',
       textPassword: '',
+      spinner: false
     };
   }
   handleLogin = () =>{
     if (this.state.textEmail != '' && this.state.textPassword != '') {
+      this.setState({
+        spinner: true
+      });
       axios.get(`https://dumyapi.000webhostapp.com/login.php?username=${this.state.textEmail}&password=${this.state.textPassword}`)
       .then(res => {
         console.log(res);
+        this.setState({
+          spinner: false
+        });
         if(res.data.status === "sukses"){
           this.props.navigation.navigate('Dashboard');
         }else{
@@ -34,6 +42,7 @@ export default class Login extends Component {
       this.refs.toast.show('Email dan Password Harus Di Isi');
     }
   }
+
   render() {
     return (
       <KeyboardAvoidingView style={styles.wrapper} behavior="padding">
@@ -65,6 +74,11 @@ export default class Login extends Component {
             </TouchableHighlight>
           </View>
           <Toast ref="toast"/>
+          <Spinner
+          visible={this.state.spinner}
+          textContent={'Loading...'}
+          textStyle={styles.spinnerTextStyle}
+        />
       </SafeAreaView>
       
       </KeyboardAvoidingView>
