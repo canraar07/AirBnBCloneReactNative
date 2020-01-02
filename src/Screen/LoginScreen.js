@@ -76,7 +76,6 @@ export default class Login extends Component {
           <Toast ref="toast"/>
           <Spinner
           visible={this.state.spinner}
-          textContent={'Loading...'}
           textStyle={styles.spinnerTextStyle}
         />
       </SafeAreaView>
